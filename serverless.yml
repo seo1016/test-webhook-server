@@ -3,18 +3,19 @@ service: webhook-test
 provider:
   name: aws
   runtime: nodejs14.x
-  stage: dev  # stage를 dev로 설정하여 경로가 dev/webhook이 되지 않도록 합니다.
+  stage: dev
+  region: us-east-1
 
 functions:
   webhook:
     handler: dist/functions/webhookHandler.handler
     events:
       - http:
-          path: webhook  # 경로를 /webhook으로 설정
+          path: webhook
           method: post
           cors: true
       - stream:
-          arn: arn:aws:dynamodb:us-west-2:123456789012:table/Webhooks/stream/2022-01-01T00:00:00.000
+          arn: arn:aws:dynamodb:us-east-1:123456789012:table/MyTable/stream/2022-01-01T00:00:00.000
           batchSize: 5
 
 plugins:
@@ -22,4 +23,6 @@ plugins:
 
 custom:
   serverless-offline:
-    httpPort: 3006  # 포트를 3006으로 변경
+    httpPort: 3006
+    stage: dev
+    region: us-east-1

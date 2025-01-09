@@ -15,10 +15,9 @@ const ddbClient = new client_dynamodb_1.DynamoDBClient({ region: 'us-west-2', en
 function addItem() {
     return __awaiter(this, void 0, void 0, function* () {
         const params = {
-            TableName: 'Webhooks',
+            TableName: 'MyTable',
             Item: {
-                id: { S: '123' },
-                message: { S: 'Webhook Trigger Test' },
+                ID: { S: '123' }
             },
         };
         try {

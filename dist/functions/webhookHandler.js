@@ -12,19 +12,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
 const client_dynamodb_2 = require("@aws-sdk/client-dynamodb");
-// DynamoDB Client 설정
+
 const ddbClient = new client_dynamodb_1.DynamoDBClient({
     region: 'us-west-2',
-    endpoint: 'http://localhost:8001', // DynamoDB 로컬의 포트
+    endpoint: 'http://localhost:8001',
 });
-// DynamoDB에 아이템 추가하는 함수
+
 function addItem() {
     return __awaiter(this, void 0, void 0, function* () {
         const params = {
-            TableName: 'Webhooks',
+            TableName: 'MyTable',
             Item: {
-                id: { S: '123' },
-                message: { S: 'Webhook Trigger Test' },
+                ID: { S: '123' }
             },
         };
         try {
@@ -37,7 +36,7 @@ function addItem() {
     });
 }
 const handler = (event, context, callback) => __awaiter(void 0, void 0, void 0, function* () {
-    yield addItem(); // 데이터 삽입 요청
+    yield addItem();
     callback(null, {
         statusCode: 200,
         body: JSON.stringify({

@@ -2,5 +2,5 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 export const ddbClient = new DynamoDBClient({
   region: 'us-west-2',
-  endpoint: 'http://localhost:8001', // 로컬 DynamoDB 연결
+  endpoint: 'http://localhost:8001',
 });

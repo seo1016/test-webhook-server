@@ -50,7 +50,7 @@
                   },
                   {
                     "stream": {
-                      "arn": "arn:aws:dynamodb:us-west-2:123456789012:table/Webhooks/stream/2022-01-01T00:00:00.000",
+                      "arn": "arn:aws:dynamodb:us-west-2:123456789012:table/MyTable/stream/2022-01-01T00:00:00.000",
                       "batchSize": 5
                     }
                   }
@@ -104,7 +104,7 @@
             },
             {
               "stream": {
-                "arn": "arn:aws:dynamodb:us-west-2:123456789012:table/Webhooks/stream/2022-01-01T00:00:00.000",
+                "arn": "arn:aws:dynamodb:us-west-2:123456789012:table/MyTable/stream/2022-01-01T00:00:00.000",
                 "batchSize": 5
               }
             }
@@ -116,7 +116,7 @@
         "serverless-plugin-typescript"
       ]
     },
-    "serviceRawFile": "service: webhook-test\n\nprovider:\n  name: aws\n  runtime: nodejs14.x\n  stage: dev  # stage를 dev로 설정하여 경로가 dev/webhook이 되지 않도록 합니다.\n\nfunctions:\n  webhook:\n    handler: src/functions/webhookHandler.handler\n    events:\n      - http:\n          path: webhook  # 경로를 /webhook으로 설정\n          method: post\n          cors: true\n      - stream:\n          arn: arn:aws:dynamodb:us-west-2:123456789012:table/Webhooks/stream/2022-01-01T00:00:00.000\n          batchSize: 5\n\nplugins:\n  - serverless-offline\n  - serverless-plugin-typescript",
+    "serviceRawFile": "service: webhook-test\n\nprovider:\n  name: aws\n  runtime: nodejs14.x\n  stage: dev  # stage를 dev로 설정하여 경로가 dev/webhook이 되지 않도록 합니다.\n\nfunctions:\n  webhook:\n    handler: src/functions/webhookHandler.handler\n    events:\n      - http:\n          path: webhook  # 경로를 /webhook으로 설정\n          method: post\n          cors: true\n      - stream:\n          arn: arn:aws:dynamodb:us-west-2:123456789012:table/MyTable/stream/2022-01-01T00:00:00.000\n          batchSize: 5\n\nplugins:\n  - serverless-offline\n  - serverless-plugin-typescript",
     "command": [
       "offline",
       "start"

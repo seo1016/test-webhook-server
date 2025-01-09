@@ -4,10 +4,9 @@ const ddbClient = new DynamoDBClient({ region: 'us-west-2', endpoint: 'http://lo
 
 export async function addItem() {
   const params = {
-    TableName: 'Webhooks',
+    TableName: 'MyTable',
     Item: {
-      id: { S: '123' },
-      message: { S: 'Webhook Trigger Test' },
+      ID: { S: '123' }
     },
   };
 
