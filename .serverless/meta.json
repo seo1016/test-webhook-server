@@ -1,0 +1,204 @@
+{
+  "unknown": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.18",
+    "isWithinCompose": false,
+    "composeOrgName": null,
+    "composeServiceName": null,
+    "command": [],
+    "options": {
+      "version": true
+    },
+    "error": null,
+    "machineId": "31a0960ddccdafac34d0ffc246f904a3",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  },
+  "/Users/seoseunghun/Desktop/project/test-webhook-server": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.18",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "default-aws-credential-resolver": "<REDACTED>",
+      "sls": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "service": "webhook-test",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs14.x",
+              "stage": "dev",
+              "region": "us-east-1",
+              "versionFunctions": true
+            },
+            "functions": {
+              "webhook": {
+                "handler": "src/functions/webhookHandler.handler",
+                "events": [
+                  {
+                    "http": {
+                      "path": "webhook",
+                      "method": "post",
+                      "cors": true
+                    }
+                  },
+                  {
+                    "stream": {
+                      "arn": "arn:aws:dynamodb:us-west-2:123456789012:table/Webhooks/stream/2022-01-01T00:00:00.000",
+                      "batchSize": 5
+                    }
+                  }
+                ]
+              }
+            },
+            "plugins": [
+              "serverless-offline",
+              "serverless-plugin-typescript"
+            ]
+          },
+          "configFileDirPath": "/Users/seoseunghun/Desktop/project/test-webhook-server",
+          "config": {
+            "type": "sls"
+          },
+          "options": {},
+          "stage": "dev",
+          "dashboard": null,
+          "logger": {
+            "namespace": "s:core:resolver:sls",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      }
+    },
+    "composeServiceName": null,
+    "servicePath": "/Users/seoseunghun/Desktop/project/test-webhook-server",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "webhook-test",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs14.x",
+        "stage": "dev",
+        "region": "us-east-1",
+        "versionFunctions": true
+      },
+      "functions": {
+        "webhook": {
+          "handler": "src/functions/webhookHandler.handler",
+          "events": [
+            {
+              "http": {
+                "path": "webhook",
+                "method": "post",
+                "cors": true
+              }
+            },
+            {
+              "stream": {
+                "arn": "arn:aws:dynamodb:us-west-2:123456789012:table/Webhooks/stream/2022-01-01T00:00:00.000",
+                "batchSize": 5
+              }
+            }
+          ]
+        }
+      },
+      "plugins": [
+        "serverless-offline",
+        "serverless-plugin-typescript"
+      ]
+    },
+    "serviceRawFile": "service: webhook-test\n\nprovider:\n  name: aws\n  runtime: nodejs14.x\n  stage: dev  # stage를 dev로 설정하여 경로가 dev/webhook이 되지 않도록 합니다.\n\nfunctions:\n  webhook:\n    handler: src/functions/webhookHandler.handler\n    events:\n      - http:\n          path: webhook  # 경로를 /webhook으로 설정\n          method: post\n          cors: true\n      - stream:\n          arn: arn:aws:dynamodb:us-west-2:123456789012:table/Webhooks/stream/2022-01-01T00:00:00.000\n          batchSize: 5\n\nplugins:\n  - serverless-offline\n  - serverless-plugin-typescript",
+    "command": [
+      "offline",
+      "start"
+    ],
+    "options": {},
+    "error": {
+      "message": "Serverless plugin \"serverless-plugin-typescript\" not found. Make sure it's installed and listed in the \"plugins\" section of your serverless config file. Use the --debug flag to learn more.",
+      "stack": "ServerlessError2: Serverless plugin \"serverless-plugin-typescript\" not found. Make sure it's installed and listed in the \"plugins\" section of your serverless config file. Use the --debug flag to learn more.\n    at PluginManager.resolveServicePlugins (file:///Users/seoseunghun/.serverless/releases/4.4.18/package/dist/sf-core.js:925:2671)\n    at async PluginManager.loadAllPlugins (file:///Users/seoseunghun/.serverless/releases/4.4.18/package/dist/sf-core.js:925:1293)\n    at async Serverless.init (file:///Users/seoseunghun/.serverless/releases/4.4.18/package/dist/sf-core.js:932:9985)\n    at async runFramework (file:///Users/seoseunghun/.serverless/releases/4.4.18/package/dist/sf-core.js:980:1336)\n    at async route (file:///Users/seoseunghun/.serverless/releases/4.4.18/package/dist/sf-core.js:1010:14772)\n    at async Object.run2 [as run] (file:///Users/seoseunghun/.serverless/releases/4.4.18/package/dist/sf-core.js:1010:15173)\n    at async run3 (file:///Users/seoseunghun/.serverless/releases/4.4.18/package/dist/sf-core.js:1010:16435)",
+      "code": "PLUGIN_NOT_FOUND"
+    },
+    "params": {},
+    "machineId": "31a0960ddccdafac34d0ffc246f904a3",
+    "stage": "dev",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "7331f2fc-d279-46ec-bd7e-bba8e640df80",
+    "orgName": "seoseunghun",
+    "userId": "8hgP0FcsmTkcmHvlZ6",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "seoseunghun",
+    "subscription": null,
+    "userEmail": "seoseunghun3@gmail.com",
+    "serviceProviderAwsRegion": "us-east-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "789195952621",
+    "projectType": "traditional",
+    "versionSf": "4.4.18",
+    "serviceUniqueId": "arn:aws:cloudformation:us-east-1:789195952621:stack/amplify-ceeyafluttermobile-prod-231841-authceeyafluttermobileprod-18BJO4PLLP3VP/2cab7db0-7f58-11ee-b46d-0efa7cca07e5",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:789195952621:stack/amplify-ceeyafluttermobile-prod-231841-authceeyafluttermobileprod-18BJO4PLLP3VP/2cab7db0-7f58-11ee-b46d-0efa7cca07e5",
+    "serviceProviderAwsCfStackCreated": "2023-11-09T23:31:58.036Z",
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": "CREATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "GoogleWebClient",
+        "OutputValue": "904024788245-062nst8rb9fi3ihgk1cb31j3ca2pmtn4.apps.googleusercontent.com"
+      },
+      {
+        "OutputKey": "UserPoolId",
+        "OutputValue": "us-east-1_8QUkBWjDy",
+        "Description": "Id for the user pool"
+      },
+      {
+        "OutputKey": "AppClientIDWeb",
+        "OutputValue": "62s3ij6bsb3m0r47qldaf5ul1q",
+        "Description": "The user pool app client id for web"
+      },
+      {
+        "OutputKey": "AppClientID",
+        "OutputValue": "1nsomded1dnb0vri2t8olb99ke",
+        "Description": "The user pool app client id"
+      },
+      {
+        "OutputKey": "AppleWebClient",
+        "OutputValue": "prod.ceeya.ios"
+      },
+      {
+        "OutputKey": "IdentityPoolId",
+        "OutputValue": "us-east-1:597639eb-aea2-4a54-ba86-248273117376",
+        "Description": "Id for the identity pool"
+      },
+      {
+        "OutputKey": "UserPoolArn",
+        "OutputValue": "arn:aws:cognito-idp:us-east-1:789195952621:userpool/us-east-1_8QUkBWjDy",
+        "Description": "Arn for the user pool"
+      },
+      {
+        "OutputKey": "IdentityPoolName",
+        "OutputValue": "ceeyafluttermobiled4573b83_identitypool_d4573b83__prod"
+      },
+      {
+        "OutputKey": "UserPoolName",
+        "OutputValue": "ceeyafluttermobileprod"
+      }
+    ]
+  }
+}

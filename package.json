@@ -12,9 +12,15 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.147",
     "@types/node": "^22.10.5",
-    "typescript": "^5.7.3"
+    "serverless-webpack": "^5.15.0",
+    "typescript": "^5.7.3",
+    "webpack": "^5.97.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.1692.0"
+    "@aws-sdk/client-dynamodb": "^3.724.0",
+    "aws-sdk": "^2.1692.0",
+    "serverless": "^2.61.0",
+    "serverless-offline": "^8.0.0"
   }
 }
